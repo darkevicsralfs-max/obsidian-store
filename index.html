@@ -26,7 +26,7 @@
             position: relative;
             overflow-x: hidden;
             min-height: 100vh;
-            width: 100vw;
+            width: 100%;
             
             /* --- PREVENT TEXT SELECTION ON DOUBLE CLICK --- */
             -webkit-user-select: none; /* Safari */
@@ -104,16 +104,16 @@
             pointer-events: none;
         }
 
-        /* --- CONTENT LAYER WRAPPER WITH CORNER SLIDE INTRO --- */
+        /* --- CONTENT LAYER WRAPPER WITH TRUE TOP-LEFT SLIDE INTRO --- */
         .page-wrapper {
             position: relative;
             z-index: 10; 
             width: 100%;
             min-height: 100vh;
             opacity: 0;
-            transform: translate(-50px, -50px); /* Positioned slightly top-left */
-            animation: slideInFromTopLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-            animation-delay: 0.4s; /* Triggers right as loading bar finishes */
+            transform: translate(-100px, -100px); /* Strictly offscreen up and to the left */
+            animation: slideInFromTopLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.3s; /* Fires fluidly as the progress bar hides */
         }
 
         @keyframes slideInFromTopLeft {
