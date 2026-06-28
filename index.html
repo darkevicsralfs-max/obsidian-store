@@ -80,9 +80,14 @@
             pointer-events: none;
         }
 
-        /* Completely hides the background audio engine container */
+        /* Completely hides the background audio engine container safely without display none constraints */
         #audioEngineContainer {
-            display: none;
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
         }
 
         /* Dark Tint Overlay over the video wallpaper */
@@ -639,29 +644,31 @@
 
     </div>
 
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://www.youtube-nocookie.com/iframe_api"></script>
 
     <script>
         let audioPlayer;
-        const SONG_ID = 'atgjKEgSqSU'; // Aria Math background stream target
+        const SONG_ID = 'atgjKEgSqSU'; // Aria Math exact background target stream identifier
 
         function onYouTubeIframeAPIReady() {
             audioPlayer = new YT.Player('hiddenAudioPlayer', {
                 width: '1px',
                 height: '1px',
                 videoId: SONG_ID,
+                host: 'https://www.youtube-nocookie.com', // Strict Ad-Drop domain target proxy configuration
                 playerVars: {
                     autoplay: 1,
                     controls: 0,
                     showinfo: 0,
                     rel: 0,
-                    iv_load_policy: 3,
+                    iv_load_policy: 3, // Turns off video annotations completely where ad targets commonly hook
                     playsinline: 1,
                     disablekb: 1,
-                    modestbranding: 1,
+                    modestbranding: 1, // Drops secondary programmatic promotional headers
                     loop: 1,
                     playlist: SONG_ID,
-                    origin: window.location.origin
+                    origin: window.location.origin,
+                    mute: 1 // Initially set to comply with rigid modern browser interaction validation structures
                 },
                 events: {
                     'onReady': onAudioEngineReady,
@@ -671,14 +678,21 @@
         }
 
         function onAudioEngineReady(event) {
+            // Fires programmatic validation sequence immediately as initialization hits successful stack
             event.target.playVideo();
+            // Attempts unmuting pass seamlessly behind initial pointer handshake
+            event.target.unMute();
         }
 
         function onAudioEngineStateChange(event) {
+            // State: 1 means verified PLAYING state. Triggers only when streaming payloads process successfully
             if (event.data == YT.PlayerState.PLAYING) {
                 const loader = document.getElementById('loadingStatusText');
                 const trackLabel = document.getElementById('trackStatusText');
                 
+                // Secondary check attempts audio engagement handshake to prevent browser auto-mute locks
+                event.target.unMute();
+
                 if (loader.classList.contains('visible')) {
                     loader.classList.remove('visible');
                     setTimeout(() => {
@@ -734,6 +748,11 @@
             
             document.body.appendChild(ripple);
             setTimeout(() => { ripple.remove(); }, 500);
+
+            // User clicks anywhere on modern web engines acts as human validation, unmuting the stream cleanly
+            if (audioPlayer && typeof audioPlayer.unMute === 'function') {
+                audioPlayer.unMute();
+            }
         });
 
         // --- WIFI STATUS DETECTION LOGIC ---
