@@ -550,7 +550,7 @@
     </div>
 
     <div class="video-background">
-        <iframe src="https://www.youtube-nocookie.com/embed/1u-nMQp2UTI?autoplay=1&loop=1&playlist=1u-nMQp2UTI&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&disablekb=1&modestbranding=1&mute=1" allow="autoplay; encrypted-media"></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/atgjKEgSqSU?autoplay=1&loop=1&playlist=atgjKEgSqSU&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&disablekb=1&modestbranding=1&mute=1" allow="autoplay; encrypted-media"></iframe>
     </div>
 
     <div id="audioEngineContainer">
@@ -648,27 +648,27 @@
 
     <script>
         let audioPlayer;
-        const SONG_ID = 'atgjKEgSqSU'; // Aria Math exact background target stream identifier
+        const SONG_ID = 'atgjKEgSqSU'; // Aria Math exact target streaming identifier linked
 
         function onYouTubeIframeAPIReady() {
             audioPlayer = new YT.Player('hiddenAudioPlayer', {
                 width: '1px',
                 height: '1px',
                 videoId: SONG_ID,
-                host: 'https://www.youtube-nocookie.com', // Strict Ad-Drop domain target proxy configuration
+                host: 'https://www.youtube-nocookie.com', // Strict No-Ad target proxy structure integration
                 playerVars: {
                     autoplay: 1,
                     controls: 0,
                     showinfo: 0,
                     rel: 0,
-                    iv_load_policy: 3, // Turns off video annotations completely where ad targets commonly hook
+                    iv_load_policy: 3, // Strip out internal annotations/cards where ad banners can load
                     playsinline: 1,
                     disablekb: 1,
-                    modestbranding: 1, // Drops secondary programmatic promotional headers
+                    modestbranding: 1, // Completely drops promotional overlays
                     loop: 1,
                     playlist: SONG_ID,
                     origin: window.location.origin,
-                    mute: 1 // Initially set to comply with rigid modern browser interaction validation structures
+                    mute: 1 // Start muted to bypass browser security auto-blocking flags instantly
                 },
                 events: {
                     'onReady': onAudioEngineReady,
@@ -678,26 +678,26 @@
         }
 
         function onAudioEngineReady(event) {
-            // Fires programmatic validation sequence immediately as initialization hits successful stack
+            // Instantly instructs YouTube's data server to start buffering and playing the song
             event.target.playVideo();
-            // Attempts unmuting pass seamlessly behind initial pointer handshake
+            // Immediate un-mute push to bypass blocking locks on compliant devices
             event.target.unMute();
         }
 
         function onAudioEngineStateChange(event) {
-            // State: 1 means verified PLAYING state. Triggers only when streaming payloads process successfully
+            // State: 1 means verified PLAYING state. This tracks exactly when actual music bits stream into user's audio cards.
             if (event.data == YT.PlayerState.PLAYING) {
                 const loader = document.getElementById('loadingStatusText');
                 const trackLabel = document.getElementById('trackStatusText');
                 
-                // Secondary check attempts audio engagement handshake to prevent browser auto-mute locks
+                // Enforce absolute unmute command verification check
                 event.target.unMute();
 
                 if (loader.classList.contains('visible')) {
                     loader.classList.remove('visible');
                     setTimeout(() => {
                         trackLabel.classList.add('visible');
-                    }, 600);
+                    }, 400); // 400ms quick-switch text animation transition delay
                 }
             }
 
@@ -749,7 +749,7 @@
             document.body.appendChild(ripple);
             setTimeout(() => { ripple.remove(); }, 500);
 
-            // User clicks anywhere on modern web engines acts as human validation, unmuting the stream cleanly
+            // If browser engine blocks background autoplay policies, user's first window click instantly executes force-unmute
             if (audioPlayer && typeof audioPlayer.unMute === 'function') {
                 audioPlayer.unMute();
             }
