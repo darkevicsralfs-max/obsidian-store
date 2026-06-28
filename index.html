@@ -25,9 +25,7 @@
             padding-bottom: 100px;
             position: relative;
             overflow-x: hidden;
-            /* Hides default cursor so the purple dot stands out nicely */
-            cursor: none; 
-
+            
             /* --- PREVENT TEXT SELECTION ON DOUBLE CLICK --- */
             -webkit-user-select: none; /* Safari */
             -moz-user-select: none;    /* Firefox */
@@ -102,7 +100,7 @@
             z-index: 9999;
             box-shadow: 0 0 12px #a855f7, 0 0 20px rgba(168, 85, 247, 0.6);
             transition: transform 0.05s ease-out, opacity 0.2s ease;
-            opacity: 1; /* Always visible initially to ensure instant rendering */
+            opacity: 1;
         }
 
         .click-ripple {
@@ -120,10 +118,6 @@
         @keyframes ripple-out {
             0% { width: 0px; height: 0px; opacity: 1; }
             100% { width: 60px; height: 60px; opacity: 0; }
-        }
-
-        a, button {
-            cursor: none !important;
         }
 
         /* --- PAGE LAYOUT & STYLING --- */
@@ -187,6 +181,7 @@
             align-items: center;
             gap: 15px;             
             margin-bottom: 60px;
+            width: 100%;
         }
 
         /* Server IP & Discord Widget Boxes */
@@ -201,7 +196,8 @@
             gap: 15px;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
-            min-width: 440px; 
+            width: 100%;
+            max-width: 460px; 
             justify-content: center;
         }
         
@@ -247,237 +243,3 @@
         .about-box {
             background-color: rgba(21, 21, 21, 0.8);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 2px solid #282828;
-            border-radius: 20px;
-            max-width: 760px;
-            margin: 0 auto 80px auto;
-            padding: 40px;
-            text-align: left;
-            height: auto; 
-            min-height: 200px; 
-        }
-        .about-box p {
-            color: #aaaaaa;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        .section-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 50px;
-            scroll-margin-top: 100px;
-        }
-
-        .ranks-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 35px;
-        }
-
-        .card-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 340px;
-        }
-
-        .rank-card {
-            background-color: rgba(21, 21, 21, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 2px solid #222222;
-            border-radius: 16px;
-            width: 100%;
-            padding: 35px 30px;
-            text-align: left;
-            height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-        .rank-card h3 {
-            color: #a855f7; 
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            font-weight: 800;
-        }
-        .rank-card p {
-            color: #aaaaaa;
-            font-size: 1rem;
-            line-height: 1.5;
-            font-weight: 400;
-        }
-
-        .buy-btn {
-            background-color: #0b0221; 
-            color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            padding: 8px 50px;
-            font-size: 1.8rem;
-            font-weight: 900;
-            text-transform: lowercase;
-            margin-top: -15px; 
-            width: fit-content;
-            text-decoration: none; 
-            display: inline-block;
-            transition: transform 0.2s, background-color 0.2s;
-            z-index: 5;
-        }
-        .buy-btn:hover {
-            transform: scale(1.05);
-            background-color: #15053b;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="top-loading-bar" id="loadingBar"></div>
-
-    <div class="video-background">
-        <iframe src="https://www.youtube.com/embed/1u-nMQp2UTI?autoplay=1&mute=1&loop=1&playlist=1u-nMQp2UTI&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&disablekb=1" allow="autoplay; encrypted-media"></iframe>
-    </div>
-
-    <div class="cursor-dot" id="customDot"></div>
-
-    <div class="wallpaper-overlay"></div>
-
-    <nav class="navbar">
-        <a href="#">Top</a>
-        <span>|</span>
-        <a href="#ranks-section">Ranks</a>
-    </nav>
-
-    <div class="container">
-        
-        <h1 class="header-title">
-            <img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae" alt="Obsidian Block Left">
-            Obsidian Store
-            <img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae" alt="Obsidian Block Right">
-        </h1>
-
-        <div class="widgets-container">
-            <div class="ip-bar">
-                <img src="grass.png" alt="Minecraft Logo" class="widget-logo">
-                <span class="label-text">MINECRAFT</span>
-                <span class="divider">|</span>
-                <span class="value-text">play.obsidiansmp.net</span>
-                <span class="divider">|</span>
-                <button class="copy-btn" id="mcBtn" onclick="copyIpAddress()">Copy IP</button>
-            </div>
-
-            <div class="ip-bar">
-                <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Discord Logo" class="widget-logo">
-                <span class="label-text">DISCORD</span>
-                <span class="divider">|</span>
-                <span class="value-text">discord.gg/XjfQNeDTzN</span>
-                <span class="divider">|</span>
-                <button class="copy-btn" id="dcBtn" onclick="copyDiscordLink()">Copy Link</button>
-            </div>
-        </div>
-
-        <h2 class="about-title">About Us</h2>
-
-        <div class="about-box">
-            <p>Write your description here! As you keep adding more and more lines of text to this paragraph, this box will smoothly expand downwards automatically to fit everything perfectly without breaking your design.</p>
-        </div>
-
-        <h2 id="ranks-section" class="section-title">Ranks</h2>
-
-        <div class="ranks-grid">
-            
-            <div class="card-container">
-                <div class="rank-card">
-                    <h3>Example Rank</h3>
-                    <p>Replace this with your first rank description.</p>
-                </div>
-                <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
-            </div>
-
-            <div class="card-container">
-                <div class="rank-card">
-                    <h3>Example Rank</h3>
-                    <p>Replace this with your first rank description.</p>
-                </div>
-                <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
-            </div>
-
-            <div class="card-container">
-                <div class="rank-card">
-                    <h3>Example Rank</h3>
-                    <p>Replace this with your first rank description.</p>
-                </div>
-                <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
-            </div>
-
-        </div>
-
-    </div>
-
-    <script>
-        // Copy IP Widget Logic
-        function copyIpAddress() {
-            navigator.clipboard.writeText('play.obsidiansmp.net');
-            const btn = document.getElementById('mcBtn');
-            btn.textContent = 'Copied!';
-            setTimeout(() => {
-                btn.textContent = 'Copy IP';
-            }, 2000);
-        }
-
-        // Copy Discord Invite Link Logic
-        function copyDiscordLink() {
-            navigator.clipboard.writeText('https://discord.gg/XjfQNeDTzN');
-            const btn = document.getElementById('dcBtn');
-            btn.textContent = 'Copied!';
-            setTimeout(() => {
-                btn.textContent = 'Copy Link';
-            }, 2000);
-        }
-
-        // --- JS MOUSE ANIMATION EVENT HANDLERS ---
-        const customDot = document.getElementById('customDot');
-
-        window.addEventListener('mousemove', (e) => {
-            customDot.style.left = e.clientX + 'px';
-            customDot.style.top = e.clientY + 'px';
-        });
-
-        document.addEventListener('mouseleave', () => {
-            customDot.style.opacity = '0';
-        });
-        document.addEventListener('mouseenter', () => {
-            customDot.style.opacity = '1';
-        });
-
-        window.addEventListener('click', (e) => {
-            const ripple = document.createElement('div');
-            ripple.className = 'click-ripple';
-            ripple.style.left = e.clientX + 'px';
-            ripple.style.top = e.clientY + 'px';
-            
-            document.body.appendChild(ripple);
-
-            setTimeout(() => {
-                ripple.remove();
-            }, 500);
-        });
-
-        // --- TOP LOADING BAR COMPLETION LOGIC ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const loadingBar = document.getElementById('loadingBar');
-            loadingBar.style.animation = 'none'; 
-            loadingBar.style.width = '100%'; 
-            
-            setTimeout(() => {
-                loadingBar.style.opacity = '0';
-            }, 400);
-        });
-    </script>
-
-</body>
-</html>
