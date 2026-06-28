@@ -4,11 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>𝗢𝗕𝗦𝗜𝗗𝗜𝗔𝗡 𝗦𝗧𝗢𝗥𝗘</title>
+<title>Obsidian Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+html{
+    scroll-behavior:smooth;
+}
 
 *{
     margin:0;
@@ -17,126 +21,311 @@
 }
 
 body{
-    background:#0f0f0f;
+    background:#0b0b0b;
     color:white;
     font-family:Poppins,sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
 }
 
-.container{
+.backTop{
+    position:fixed;
+    top:20px;
+    right:30px;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.25s;
+    z-index:100;
+}
+
+.backTop:hover{
+    color:#8f5cff;
+}
+
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
 }
 
 .logo{
     display:flex;
-    justify-content:center;
     align-items:center;
     gap:30px;
-    margin-bottom:35px;
 }
 
 .logo img{
-    width:80px;
+    width:90px;
     image-rendering:pixelated;
 }
 
 .logo h1{
     font-size:70px;
-    font-weight:800;
-    letter-spacing:4px;
+    letter-spacing:5px;
 }
 
-.ip-box{
-    display:inline-flex;
+.ipBox{
+
+    margin-top:40px;
+
+    display:flex;
+
     align-items:center;
-    gap:18px;
-    background:#1b1b1b;
-    padding:18px 28px;
+
+    gap:15px;
+
+    background:#171717;
+
+    padding:20px 35px;
+
     border-radius:15px;
-    border:2px solid #333;
-    font-size:22px;
-}
 
-.label{
-    color:#bbbbbb;
-    font-weight:700;
-}
+    border:2px solid #2f2f2f;
 
-.separator{
-    color:#555;
 }
 
 .ip{
-    color:#9b6dff;
-    font-weight:700;
+    color:#8f5cff;
+    font-weight:bold;
 }
 
-button{
-    background:#7a3cff;
+.copyBtn{
+
+    padding:12px 25px;
+
+    background:#3b82f6;
+
     color:white;
+
     border:none;
-    padding:12px 22px;
+
     border-radius:10px;
-    font-size:17px;
+
     cursor:pointer;
-    transition:.2s;
+
+    font-weight:bold;
+
+    transition:.25s;
+
 }
 
-button:hover{
-    background:#9358ff;
+.copyBtn:hover{
+
+    box-shadow:0 0 20px #3b82f6;
+
     transform:scale(1.05);
+
+}
+
+.menu{
+
+    margin-top:60px;
+
+    font-size:45px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.menu:hover{
+
+    color:#8f5cff;
+
+}
+
+.store{
+
+    min-height:100vh;
+
+    padding-top:120px;
+
+    text-align:center;
+
+}
+
+.store h2{
+
+    font-size:55px;
+
+    margin-bottom:60px;
+
+}
+
+.rank{
+
+    width:340px;
+
+    margin:25px auto;
+
+    background:#171717;
+
+    border:2px solid #8f5cff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    transition:.3s;
+
+}
+
+.rank:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 0 30px #8f5cff;
+
+}
+
+.rank h3{
+
+    font-size:35px;
+
+    margin-bottom:15px;
+
+}
+
+.buy{
+
+    margin-top:20px;
+
+    display:inline-block;
+
+    background:#3b82f6;
+
+    padding:14px 35px;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.buy:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 20px #3b82f6;
+
 }
 
 </style>
 
 </head>
-<body>
 
-<div class="container">
+<body id="top">
+
+<a href="#top" class="backTop">Back to Top ↑</a>
+
+<section class="hero">
 
 <div class="logo">
 
-<img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae" alt="Obsidian">
+<img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae">
 
-<h1>ᴏʙsɪᴅɪᴀɴ sᴛᴏʀᴇ</h1>
+<h1>OBSIDIAN STORE</h1>
 
-<img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae" alt="Obsidian">
-
-</div>
-
-<div class="ip-box">
-
-<span class="label">MINECRAFT</span>
-
-<span class="separator">|</span>
-
-<span class="ip" id="serverIP">play.obsidiansmp.net</span>
-
-<span class="separator">|</span>
-
-<button onclick="copyIP()">Copy IP</button>
+<img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae">
 
 </div>
 
+<div class="ipBox">
+
+<span>MINECRAFT</span>
+
+<span>|</span>
+
+<span class="ip" id="serverIP">YOUR_SERVER_IP</span>
+
+<span>|</span>
+
+<button class="copyBtn" onclick="copyIP()">Copy</button>
+
 </div>
+
+<div class="menu"
+onclick="document.getElementById('store').scrollIntoView({behavior:'smooth'})">
+
+☰
+
+</div>
+
+</section>
+
+<section class="store" id="store">
+
+<h2>STORE</h2>
+
+<div class="rank">
+
+<h3>VIP</h3>
+
+<p>Exclusive perks and cosmetics.</p>
+
+<a class="buy"
+href="https://discord.gg/wNpcbbbS"
+target="_blank">
+CLICK
+</a>
+
+</div>
+
+<div class="rank">
+
+<h3>MVP</h3>
+
+<p>More rewards and better perks.</p>
+
+<a class="buy"
+href="https://discord.gg/wNpcbbbS"
+target="_blank">
+CLICK
+</a>
+
+</div>
+
+<div class="rank">
+
+<h3>LEGEND</h3>
+
+<p>The ultimate supporter rank.</p>
+
+<a class="buy"
+href="https://discord.gg/wNpcbbbS"
+target="_blank">
+CLICK
+</a>
+
+</div>
+
+</section>
 
 <script>
 
 function copyIP(){
 
-const ip = document.getElementById("serverIP").innerText;
+const ip=document.getElementById("serverIP").innerText;
 
 navigator.clipboard.writeText(ip);
 
-const btn = document.querySelector("button");
+const btn=document.querySelector(".copyBtn");
 
-btn.innerText = "Copied!";
+btn.innerText="Copied!";
 
-setTimeout(()=>{
-    btn.innerText = "Copy IP";
+setTimeout(function(){
+
+btn.innerText="Copy";
+
 },2000);
 
 }
