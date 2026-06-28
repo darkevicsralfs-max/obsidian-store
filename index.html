@@ -223,6 +223,11 @@
             opacity: 0 !important;
         }
 
+.loading-dots span{opacity:0;animation:dotBlink 1.2s infinite;}
+.loading-dots span:nth-child(2){animation-delay:.2s;}
+.loading-dots span:nth-child(3){animation-delay:.4s;}
+@keyframes dotBlink{0%,20%{opacity:0;}50%{opacity:1;}100%{opacity:0;}}
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -572,7 +577,7 @@
             </div>
 
             <div class="audio-status-container">
-                <div id="nowPlayingText" class="audio-status-text now-playing-display">NOW PLAYING...</div>
+                <div id="nowPlayingText" class="audio-status-text now-playing-display">NOW PLAYING<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span></div>
                 <div id="trackStatusText" class="audio-status-text track-display">ARIA MATH</div>
             </div>
         </nav>
@@ -703,24 +708,21 @@
 
         // Handles the structured structural Fade In -> NOW PLAYING... -> Fade Out -> Fade In -> ARIA MATH sequence
         function runAudioStatusAnimationSequence() {
-            const nowPlaying = document.getElementById('nowPlayingText');
-            const trackName = document.getElementById('trackStatusText');
-
-            // Step 1: Fade in "NOW PLAYING..."
+            const nowPlaying=document.getElementById('nowPlayingText');
+            const trackName=document.getElementById('trackStatusText');
+            trackName.style.display='none';
+            nowPlaying.classList.remove('fade-out');
             nowPlaying.classList.add('fade-in');
-
-            // Step 2: Leave it visible for 1.8 seconds, then Fade out "NOW PLAYING..."
-            setTimeout(() => {
+            setTimeout(()=>{
                 nowPlaying.classList.remove('fade-in');
                 nowPlaying.classList.add('fade-out');
-
-                // Step 3: Wait for the 600ms fade transition to complete, then clear classes and Fade in "ARIA MATH"
-                setTimeout(() => {
-                    nowPlaying.style.display = 'none';
+                setTimeout(()=>{
+                    nowPlaying.style.display='none';
+                    trackName.style.display='block';
+                    trackName.classList.remove('fade-out');
                     trackName.classList.add('fade-in');
-                }, 600);
-
-            }, 1800);
+                },600);
+            },2000);
         }
 
         // --- CLIPBOARD LOGIC ---
