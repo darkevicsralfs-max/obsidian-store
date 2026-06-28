@@ -6,17 +6,9 @@
 
 <title>Obsidian Store</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-
-html{
-    scroll-behavior:smooth;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
 
 body{
     background:#0f0f0f;
@@ -30,31 +22,6 @@ body{
     text-align:left;
 }
 
-.backTop{
-    position:fixed;
-    top:20px;
-    right:30px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:bold;
-    transition:.25s;
-    z-index:100;
-}
-
-.backTop:hover{
-    color:#8f5cff;
-}
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    text-align:center;
-    padding-top:40px;
-}
-
 .logo{
     display:flex;
     align-items:center;
@@ -64,7 +31,6 @@ body{
 
 .logo img{
     width:40px;
-    image-rendering:pixelated;
 }
 
 .logo h1{
@@ -73,201 +39,66 @@ body{
     letter-spacing:2px;
 }
 
-.ipBox{
-    display:flex;
+.ip-box{
+    display:inline-flex;
     align-items:center;
-    gap:15px;
-    background:#171717;
-    border:2px solid #2f2f2f;
-    border-radius:16px;
-    padding:20px 35px;
-}
-
-.ip{
-    color:#8f5cff;
-    font-weight:bold;
-}
-
-.copyBtn{
-    padding:12px 25px;
-    background:#3b82f6;
-    border:none;
-    border-radius:10px;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.copyBtn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 20px #3b82f6;
-}
-
-.menu{
-    margin-top:70px;
-    font-size:60px;
-    color:#d2b6ff;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.menu:hover{
-    color:#8f5cff;
-    text-shadow:0 0 15px #8f5cff;
-}
-
-.store{
-    min-height:100vh;
-    padding:120px 20px;
-    text-align:center;
-}
-
-.store h2{
-    font-size:60px;
-    margin-bottom:60px;
-    font-weight:900;
-}
-
-.rank{
-    width:340px;
-    margin:25px auto;
-    padding:30px;
-    background:#141414;
-    border:2px solid #8f5cff;
-    border-radius:18px;
-    transition:.3s;
-}
-
-.rank:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 25px #8f5cff;
-}
-
-.rank h3{
-    font-size:40px;
-    color:#a970ff;
-    margin-bottom:15px;
-}
-
-.rank p{
-    color:#ddd;
-    margin-bottom:25px;
-}
-
-.buy{
-    display:inline-block;
-    text-decoration:none;
-    background:#3b82f6;
-    color:white;
-    padding:14px 45px;
+    gap:18px;
+    background:#1b1b1b;
+    padding:14px 20px;
     border-radius:12px;
-    font-weight:bold;
-    transition:.25s;
+    border:2px solid #333;
+    font-size:16px;
 }
 
-.buy:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 20px #3b82f6;
+.label{color:#bbb;font-weight:700;}
+.separator{color:#555;}
+.ip{color:#9b6dff;font-weight:700;}
+
+button{
+    background:#7a3cff;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    font-size:14px;
+    cursor:pointer;
 }
 
-@media(max-width:700px){
-
-.logo h1{
-    font-size:48px;
-}
-
-.ipBox{
-    flex-direction:column;
-    gap:12px;
-}
-
-.rank{
-    width:90%;
-}
-
+button:hover{
+    background:#9358ff;
 }
 
 </style>
-
 </head>
 
-<body id="top">
+<body>
 
-<a href="#top" class="backTop">Back to Top ↑</a>
-
-<section class="hero">
+<div class="container">
 
 <div class="logo">
-<h1>Obsidian Store</h1>
+<img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae">
+<h1>ᴏʙsɪᴅɪᴀɴ sᴛᴏʀᴇ</h1>
+<img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae">
 </div>
 
-<div class="ipBox">
-
-<span>MINECRAFT</span>
-
-<span>|</span>
-
-<span class="ip" id="serverIP">YOUR_SERVER_IP</span>
-
-<span>|</span>
-
-<button class="copyBtn" onclick="copyIP()">Copy</button>
-
+<div class="ip-box">
+<span class="label">MINECRAFT</span>
+<span class="separator">|</span>
+<span class="ip" id="serverIP">play.obsidiansmp.net</span>
+<span class="separator">|</span>
+<button onclick="copyIP()">Copy IP</button>
 </div>
 
-<div class="menu"
-onclick="document.getElementById('store').scrollIntoView({behavior:'smooth'})">
-
-☰
-
 </div>
-
-</section>
-
-<section class="store" id="store">
-
-<h2>STORE</h2>
-
-<div class="rank">
-<h3>VIP</h3>
-<p>Exclusive perks and cosmetics.</p>
-<a class="buy" href="https://discord.gg/wNpcbbbS" target="_blank">CLICK</a>
-</div>
-
-<div class="rank">
-<h3>MVP</h3>
-<p>More rewards and better perks.</p>
-<a class="buy" href="https://discord.gg/wNpcbbbS" target="_blank">CLICK</a>
-</div>
-<div class="rank">
-<h3>LEGEND</h3>
-<p>The ultimate supporter rank.</p>
-<a class="buy" href="https://discord.gg/wNpcbbbS" target="_blank">CLICK</a>
-</div>
-
-</section>
 
 <script>
-
 function copyIP(){
-
-    const ip=document.getElementById("serverIP").innerText;
-
-    navigator.clipboard.writeText(ip);
-
-    const btn=document.querySelector(".copyBtn");
-
-    btn.innerText="Copied!";
-
-    setTimeout(function(){
-
-        btn.innerText="Copy";
-
-    },2000);
-
+const ip=document.getElementById("serverIP").innerText;
+navigator.clipboard.writeText(ip);
+const btn=document.querySelector("button");
+btn.innerText="Copied!";
+setTimeout(()=>btn.innerText="Copy IP",2000);
 }
-
 </script>
 
 </body>
