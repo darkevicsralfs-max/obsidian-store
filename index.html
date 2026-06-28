@@ -63,7 +63,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2; /* Stays beneath everything */
+            z-index: -2; 
             pointer-events: none; 
             overflow: hidden;
         }
@@ -88,14 +88,14 @@
             width: 100%;
             height: 100%;
             background: rgba(11, 11, 11, 0.85);
-            z-index: -1; /* Above video, below text wrapper */
+            z-index: -1; 
             pointer-events: none;
         }
 
         /* --- CONTENT LAYER WRAPPER --- */
         .page-wrapper {
             position: relative;
-            z-index: 10; /* Forces all store content to stack on top of the background layers */
+            z-index: 10; 
             width: 100%;
         }
 
@@ -106,7 +106,6 @@
             background-color: #a855f7;
             border-radius: 50%;
             position: fixed;
-            /* Default position offscreen so it doesn't blink in the center on load */
             left: -100px;
             top: -100px;
             transform: translate(-50%, -50%);
@@ -114,7 +113,7 @@
             z-index: 9999;
             box-shadow: 0 0 12px #a855f7, 0 0 20px rgba(168, 85, 247, 0.6);
             transition: transform 0.05s ease-out, opacity 0.2s ease;
-            opacity: 0; /* Keep hidden until we track context placement */
+            opacity: 0; 
         }
 
         .click-ripple {
@@ -215,8 +214,8 @@
         }
         
         .widget-logo {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             object-fit: contain;
         }
 
@@ -440,7 +439,7 @@
 
             <div class="widgets-container">
                 <div class="ip-bar">
-                    <img src="https://minecraft.wiki/images/Grass_Block_JE7_BE7.png" alt="Minecraft Logo" class="widget-logo">
+                    <img src="https://cdn.freebiesupply.com/logos/large/2x/minecraft-1-logo-png-transparent.png" alt="Minecraft Logo" class="widget-logo">
                     <span class="label-text">MINECRAFT</span>
                     <span class="divider">|</span>
                     <span class="value-text">play.obsidiansmp.net</span>
@@ -513,19 +512,17 @@
             setTimeout(() => { btn.textContent = 'Copy Link'; }, 2000);
         }
 
-        // --- FIXED JS MOUSE ANIMATION LOGIC ---
+        // --- MOUSE ANIMATION LOGIC ---
         const customDot = document.getElementById('customDot');
 
         function updateDotPosition(e) {
             customDot.style.left = e.clientX + 'px';
             customDot.style.top = e.clientY + 'px';
-            // Show the dot as soon as we know where the cursor actually is
             if (customDot.style.opacity !== '1') {
                 customDot.style.opacity = '1';
             }
         }
 
-        // Instantly maps position on hover, entry, or motion
         window.addEventListener('mousemove', updateDotPosition);
         document.addEventListener('mouseenter', updateDotPosition);
         document.addEventListener('mouseover', updateDotPosition);
