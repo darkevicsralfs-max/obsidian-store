@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,107 +12,286 @@
 
 <style>
 
-body{
-    background:#0f0f0f;
-    color:white;
-    font-family:Poppins,sans-serif;
-    margin:0;
-    padding:20px;
+html{
+    scroll-behavior:smooth;
 }
 
-.container{
-    text-align:left;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#111111;
+    color:white;
+    font-family:Poppins,sans-serif;
+}
+
+/* ===========================
+   Navigation
+=========================== */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+
+    padding:22px 34px;
+
+    background:#111111;
+
+    z-index:1000;
+
+}
+
+.nav-links{
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+}
+
+.nav-links a{
+
+    color:white;
+    text-decoration:none;
+
+    font-size:18px;
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+.nav-links a:hover{
+
+    color:#8f63ff;
+
+}
+
+.nav-links span{
+
+    color:#666;
+
+}
+
+/* ===========================
+   Divider
+=========================== */
+
+.divider{
+
+    margin-top:72px;
+
+    width:100%;
+    height:4px;
+
+    background:#2e2e2e;
+
+}
+
+/* ===========================
+   Hero
+=========================== */
+
+.hero{
+
+    text-align:center;
+
+    padding-top:28px;
+
 }
 
 .logo{
+
     display:flex;
+    justify-content:center;
     align-items:center;
-    gap:15px;
-    margin-bottom:25px;
+
+    gap:22px;
+
 }
 
 .logo img{
-    width:40px;
+
+    width:58px;
+
+    image-rendering:pixelated;
+
 }
 
 .logo h1{
-    font-size:32px;
+
+    font-size:56px;
+
     font-weight:800;
-    letter-spacing:2px;
+
 }
 
+/* ===========================
+   IP Box
+=========================== */
+
 .ip-box{
+
+    margin-top:30px;
+
     display:inline-flex;
     align-items:center;
+
     gap:18px;
+
     background:#1b1b1b;
-    padding:14px 20px;
-    border-radius:12px;
-    border:2px solid #333;
-    font-size:16px;
+
+    border:2px solid #353535;
+
+    border-radius:15px;
+
+    padding:16px 24px;
+
 }
 
 .label{
-    color:#bbb;
+
+    color:#d6d6d6;
     font-weight:700;
+
 }
 
 .separator{
+
     color:#555;
+
 }
 
 .ip{
-    color:#9b6dff;
+
+    color:#8f63ff;
+
     font-weight:700;
+
 }
 
 button{
-    background:#7a3cff;
+
+    background:#6f39ff;
+
     color:white;
+
     border:none;
-    padding:10px 16px;
-    border-radius:8px;
-    font-size:14px;
+
+    padding:11px 22px;
+
+    border-radius:9px;
+
+    font-size:15px;
+
     cursor:pointer;
+
+    transition:.25s;
+
 }
 
 button:hover{
-    background:#9358ff;
+
+    background:#8859ff;
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+   Placeholder
+=========================== */
+
+.placeholder{
+
+    height:900px;
+
 }
 
 </style>
+
 </head>
 
-<body>
+<body id="top">
 
-<div class="container">
+<nav class="navbar">
+
+    <div class="nav-links">
+
+        <a href="#top">Top</a>
+
+        <span>|</span>
+
+        <a href="#ranks">Ranks</a>
+
+    </div>
+
+</nav>
+
+<div class="divider"></div>
+
+<header class="hero">
 
 <div class="logo">
+
 <img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae" alt="Obsidian">
-<h1>ᴏʙsɪᴅɪᴀɴ sᴛᴏʀᴇ</h1>
+
+<h1>Obsidian Store</h1>
+
 <img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae" alt="Obsidian">
+
 </div>
 
 <div class="ip-box">
+
 <span class="label">MINECRAFT</span>
+
 <span class="separator">|</span>
+
 <span class="ip" id="serverIP">play.obsidiansmp.net</span>
+
 <span class="separator">|</span>
+
 <button onclick="copyIP()">Copy IP</button>
-</div>
 
 </div>
+
+</header>
+
+<div class="placeholder" id="ranks"></div>
 
 <script>
+
 function copyIP(){
+
 const ip=document.getElementById("serverIP").innerText;
+
 navigator.clipboard.writeText(ip);
+
 const btn=document.querySelector("button");
+
 btn.innerText="Copied!";
+
 setTimeout(()=>{
-    btn.innerText="Copy IP";
+
+btn.innerText="Copy IP";
+
 },2000);
+
 }
+
 </script>
 
 </body>
