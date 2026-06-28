@@ -25,40 +25,79 @@
             padding-bottom: 100px;
             position: relative;
             overflow-x: hidden;
+            /* Hides default cursor so the purple dot stands out nicely */
+            cursor: none; 
         }
 
-        /* Fullscreen Background Video Container */
-        .video-background-container {
+        /* --- CUSTOM MOUSE TRACKING EFFECTS --- */
+        
+        /* The Purple Dot trailing the cursor */
+        .cursor-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #a855f7;
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none; /* Let's clicks pass straight through */
+            z-index: 9999;
+            box-shadow: 0 0 12px #a855f7, 0 0 20px rgba(168, 85, 247, 0.6);
+            transition: transform 0.05s ease-out;
+        }
+
+        /* Click Wave Animation Ripple Box */
+        .click-ripple {
+            position: fixed;
+            border: 3px solid #a855f7;
+            border-radius: 50%;
+            background: transparent;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            animation: ripple-out 0.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+        }
+
+        @keyframes ripple-out {
+            0% {
+                width: 0px;
+                height: 0px;
+                opacity: 1;
+            }
+            100% {
+                width: 60px;
+                height: 60px;
+                opacity: 0;
+            }
+        }
+
+        /* Make sure clickable assets keep standard cursor hidden */
+        a, button {
+            cursor: none !important;
+        }
+
+        /* --- PAGE LAYOUT & STYLING --- */
+
+        /* Clean HTML5 Fullscreen Background Video */
+        .video-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover; 
             z-index: -2;
-            pointer-events: none; /* Prevents users from clicking the video */
-            overflow: hidden;
+            pointer-events: none;
         }
 
-        /* Forces the YouTube iframe to fill screen and crop black bars */
-        .video-background-container iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 56.25vw; /* 16:9 Aspect Ratio */
-            min-height: 100vh;
-            min-width: 177.77vh; /* 16:9 Aspect Ratio */
-            transform: translate(-50%, -50%);
-        }
-
-        /* Dark Tint Overlay over the video to ensure text visibility */
+        /* Dark Tint Overlay over the video to keep everything readable */
         .video-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(11, 11, 11, 0.75); /* Darkens video by 75% */
+            background: rgba(11, 11, 11, 0.75); 
             z-index: -1;
             pointer-events: none;
         }
@@ -152,7 +191,6 @@
             border: none;
             padding: 6px 14px;
             border-radius: 6px;
-            cursor: pointer;
             font-weight: 800;
             font-size: 0.8rem;
             transition: background-color 0.2s;
@@ -254,7 +292,6 @@
             font-weight: 900;
             text-transform: lowercase;
             margin-top: -15px; 
-            cursor: pointer;
             width: fit-content;
             text-decoration: none; 
             display: inline-block;
@@ -269,13 +306,11 @@
 </head>
 <body>
 
-    <div class="video-background-container">
-        <iframe src="https://www.youtube.com/embed/eCHaiEjCDFM?autoplay=1&mute=1&loop=1&playlist=eCHaiEjCDFM&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media" 
-                allowfullscreen>
-        </iframe>
-    </div>
+    <div class="cursor-dot" id="customDot"></div>
+
+    <video class="video-background" autoplay loop muted playsinline>
+        <source src="background.mp4" type="video/mp4">
+    </video>
 
     <div class="video-overlay"></div>
 
@@ -340,6 +375,7 @@
     </div>
 
     <script>
+        // Copy IP Widget Logic
         function copyIpAddress() {
             navigator.clipboard.writeText('play.obsidiansmp.net');
             const btn = document.querySelector('.copy-btn');
@@ -348,6 +384,30 @@
                 btn.textContent = 'Copy IP';
             }, 2000);
         }
+
+        // --- JS MOUSE ANIMATION EVENT HANDLERS ---
+        const customDot = document.getElementById('customDot');
+
+        // Track mouse position to update the purple glow dot
+        window.addEventListener('mousemove', (e) => {
+            customDot.style.left = e.clientX + 'px';
+            customDot.style.top = e.clientY + 'px';
+        });
+
+        // Trigger expanding circle ring animation on click
+        window.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.className = 'click-ripple';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            
+            document.body.appendChild(ripple);
+
+            // Clean up the DOM element after the 0.5s fade out finishes
+            setTimeout(() => {
+                ripple.remove();
+            }, 500);
+        });
     </script>
 
 </body>
