@@ -179,11 +179,11 @@
             font-weight: 800;
         }
 
-        /* --- AUDIO STATUS WIDGET SYSTEM (NO PHYSICAL CONTROLS) --- */
+        /* --- AUDIO STATUS WIDGET SYSTEM --- */
         .audio-status-container {
             font-family: 'Poppins', sans-serif;
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #888888;
             position: relative;
             min-width: 160px;
@@ -196,30 +196,31 @@
             right: 0;
             top: 0;
             white-space: nowrap;
-            transition: opacity 0.6s ease;
             opacity: 0;
+            transition: opacity 0.6s ease;
         }
 
-        .audio-status-text.visible {
-            opacity: 1;
-        }
-
-        .loading-dots::after {
-            content: ' .';
-            animation: dotWave 1.5s steps(4, end) infinite;
-        }
-
-        @keyframes dotWave {
-            0% { content: ' .'; }
-            33% { content: ' . .'; }
-            66% { content: ' . . .'; }
-            100% { content: ''; }
+        /* Text State Specific Visual Styles */
+        .now-playing-display {
+            color: #888888;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .track-display {
             color: #a855f7;
             text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        /* Dynamic Animation Classes managed by Lifecycle Handlers */
+        .fade-in {
+            opacity: 1 !important;
+        }
+
+        .fade-out {
+            opacity: 0 !important;
         }
 
         .container {
@@ -571,8 +572,8 @@
             </div>
 
             <div class="audio-status-container">
-                <div id="loadingStatusText" class="audio-status-text loading-dots visible">Loading audio</div>
-                <div id="trackStatusText" class="audio-status-text track-display">Aria math - C418</div>
+                <div id="nowPlayingText" class="audio-status-text now-playing-display">NOW PLAYING...</div>
+                <div id="trackStatusText" class="audio-status-text track-display">ARIA MATH</div>
             </div>
         </nav>
 
@@ -649,6 +650,7 @@
     <script>
         let audioPlayer;
         const SONG_ID = 'atgjKEgSqSU'; // Aria Math background stream identifier
+        let animationSequenceTriggered = false;
 
         function onYouTubeIframeAPIReady() {
             audioPlayer = new YT.Player('hiddenAudioPlayer', {
@@ -683,24 +685,42 @@
         }
 
         function onAudioEngineStateChange(event) {
-            // When Aria Math successfully loads and plays, un-mute it and update status text instantly
+            // Triggered only when the track successfully streams and hits a full playing state
             if (event.data == YT.PlayerState.PLAYING) {
-                const loader = document.getElementById('loadingStatusText');
-                const trackLabel = document.getElementById('trackStatusText');
-                
                 event.target.unMute();
 
-                if (loader.classList.contains('visible')) {
-                    loader.classList.remove('visible');
-                    setTimeout(() => {
-                        trackLabel.classList.add('visible');
-                    }, 400); 
+                // Prevent the intro animation text loop sequence from firing multiple times
+                if (!animationSequenceTriggered) {
+                    animationSequenceTriggered = true;
+                    runAudioStatusAnimationSequence();
                 }
             }
 
             if (event.data == YT.PlayerState.ENDED) {
                 audioPlayer.playVideo();
             }
+        }
+
+        // Handles the structured structural Fade In -> NOW PLAYING... -> Fade Out -> Fade In -> ARIA MATH sequence
+        function runAudioStatusAnimationSequence() {
+            const nowPlaying = document.getElementById('nowPlayingText');
+            const trackName = document.getElementById('trackStatusText');
+
+            // Step 1: Fade in "NOW PLAYING..."
+            nowPlaying.classList.add('fade-in');
+
+            // Step 2: Leave it visible for 1.8 seconds, then Fade out "NOW PLAYING..."
+            setTimeout(() => {
+                nowPlaying.classList.remove('fade-in');
+                nowPlaying.classList.add('fade-out');
+
+                // Step 3: Wait for the 600ms fade transition to complete, then clear classes and Fade in "ARIA MATH"
+                setTimeout(() => {
+                    nowPlaying.style.display = 'none';
+                    trackName.classList.add('fade-in');
+                }, 600);
+
+            }, 1800);
         }
 
         // --- CLIPBOARD LOGIC ---
