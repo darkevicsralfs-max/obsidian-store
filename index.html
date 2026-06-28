@@ -1,298 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Obsidian Store</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-html{
-    scroll-behavior:smooth;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    background:#111111;
-    color:white;
-    font-family:Poppins,sans-serif;
-}
-
-/* ===========================
-   Navigation
-=========================== */
-
-.navbar{
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-
-    display:flex;
-    justify-content:flex-start;
-    align-items:center;
-
-    padding:22px 34px;
-
-    background:#111111;
-
-    z-index:1000;
-
-}
-
-.nav-links{
-
-    display:flex;
-    align-items:center;
-    gap:14px;
-
-}
-
-.nav-links a{
-
-    color:white;
-    text-decoration:none;
-
-    font-size:18px;
-    font-weight:700;
-
-    transition:.25s;
-
-}
-
-.nav-links a:hover{
-
-    color:#8f63ff;
-
-}
-
-.nav-links span{
-
-    color:#666;
-
-}
-
-/* ===========================
-   Divider
-=========================== */
-
-.divider{
-
-    margin-top:72px;
-
-    width:100%;
-    height:4px;
-
-    background:#2e2e2e;
-
-}
-
-/* ===========================
-   Hero
-=========================== */
-
-.hero{
-
-    text-align:center;
-
-    padding-top:28px;
-
-}
-
-.logo{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    gap:22px;
-
-}
-
-.logo img{
-
-    width:58px;
-
-    image-rendering:pixelated;
-
-}
-
-.logo h1{
-
-    font-size:56px;
-
-    font-weight:800;
-
-}
-
-/* ===========================
-   IP Box
-=========================== */
-
-.ip-box{
-
-    margin-top:30px;
-
-    display:inline-flex;
-    align-items:center;
-
-    gap:18px;
-
-    background:#1b1b1b;
-
-    border:2px solid #353535;
-
-    border-radius:15px;
-
-    padding:16px 24px;
-
-}
-
-.label{
-
-    color:#d6d6d6;
-    font-weight:700;
-
-}
-
-.separator{
-
-    color:#555;
-
-}
-
-.ip{
-
-    color:#8f63ff;
-
-    font-weight:700;
-
-}
-
-button{
-
-    background:#6f39ff;
-
-    color:white;
-
-    border:none;
-
-    padding:11px 22px;
-
-    border-radius:9px;
-
-    font-size:15px;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-button:hover{
-
-    background:#8859ff;
-
-    transform:translateY(-2px);
-
-}
-
-/* ===========================
-   Placeholder
-=========================== */
-
-.placeholder{
-
-    height:900px;
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obsidian Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base Reset & Theme */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            background-color: #000000;
+            padding: 15px 40px;
+            text-align: left;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-right: 20px;
+        }
+        .navbar span {
+            color: #444;
+            margin-right: 20px;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Area */
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        /* Placeholder for your obsidian block emojis/images */
+        .header-title::before, .header-title::after {
+            content: "⬛"; /* Replace with an image tag if you have a custom obsidian icon */
+            font-size: 1.8rem;
+        }
+
+        /* Server IP Widget Box */
+        .ip-bar {
+            background-color: #141414;
+            border: 1px solid #262626;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            gap: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 50px;
+        }
+        .ip-bar .mc-label {
+            color: #aaaaaa;
+            font-weight: 600;
+        }
+        .ip-bar .ip-address {
+            color: #a855f7; /* Light purple */
+            font-weight: 600;
+        }
+        .ip-bar .copy-btn {
+            background-color: #6366f1; /* Indigo/Purple button */
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        /* Ranks Grid Layout */
+        .ranks-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        /* Card Container (Rank Box + Buy Button) */
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+        }
+
+        /* Individual Rank Box */
+        .rank-card {
+            background-color: #1a1a1a;
+            border: 1px solid #2d2d2d;
+            border-radius: 12px;
+            width: 100%;
+            padding: 25px;
+            text-align: left;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .rank-card h3 {
+            color: #a855f7; /* Purple rank title */
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .rank-card p {
+            color: #cccccc;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Buy Button styling */
+        .buy-btn {
+            background-color: #0b0221; /* Very dark purple/black */
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 35px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: lowercase;
+            margin-top: 15px;
+            cursor: pointer;
+            width: fit-content;
+            transition: transform 0.2s;
+        }
+        .buy-btn:hover {
+            transform: scale(1.05);
+            background-color: #15053b;
+        }
+    </style>
 </head>
+<body>
 
-<body id="top">
-
-<nav class="navbar">
-
-    <div class="nav-links">
-
-        <a href="#top">Top</a>
-
+    <nav class="navbar">
+        <a href="#">Top</a>
         <span>|</span>
+        <a href="#">Ranks</a>
+    </nav>
 
-        <a href="#ranks">Ranks</a>
+    <div class="container">
+        
+        <h1 class="header-title">Obsidian Store</h1>
+
+        <div class="ip-bar">
+            <span class="mc-label">MINECRAFT</span>
+            <span>|</span>
+            <span class="ip-address">play.obsidiansmp.net</span>
+            <span>|</span>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('play.obsidiansmp.net')">Copy IP</button>
+        </div>
+
+        <h2 class="section-title">Ranks</h2>
+
+        <div class="ranks-grid">
+            
+            <div class="card-container">
+                <div class="rank-card">
+                    <h3>Example Rank</h3>
+                    <p>Replace this with your first rank description.</p>
+                </div>
+                <button class="buy-btn">buy</button>
+            </div>
+
+            <div class="card-container">
+                <div class="rank-card">
+                    <h3>Example Rank</h3>
+                    <p>Replace this with your first rank description.</p>
+                </div>
+                <button class="buy-btn">buy</button>
+            </div>
+
+            <div class="card-container">
+                <div class="rank-card">
+                    <h3>Example Rank</h3>
+                    <p>Replace this with your first rank description.</p>
+                </div>
+                <button class="buy-btn">buy</button>
+            </div>
+
+        </div>
 
     </div>
-
-</nav>
-
-<div class="divider"></div>
-
-<header class="hero">
-
-<div class="logo">
-
-<img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae" alt="Obsidian">
-
-<h1>Obsidian Store</h1>
-
-<img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae" alt="Obsidian">
-
-</div>
-
-<div class="ip-box">
-
-<span class="label">MINECRAFT</span>
-
-<span class="separator">|</span>
-
-<span class="ip" id="serverIP">play.obsidiansmp.net</span>
-
-<span class="separator">|</span>
-
-<button onclick="copyIP()">Copy IP</button>
-
-</div>
-
-</header>
-
-<div class="placeholder" id="ranks"></div>
-
-<script>
-
-function copyIP(){
-
-const ip=document.getElementById("serverIP").innerText;
-
-navigator.clipboard.writeText(ip);
-
-const btn=document.querySelector("button");
-
-btn.innerText="Copied!";
-
-setTimeout(()=>{
-
-btn.innerText="Copy IP";
-
-},2000);
-
-}
-
-</script>
 
 </body>
 </html>
