@@ -41,7 +41,7 @@
             font-weight: 800;
             font-size: 1.1rem;
             margin-right: 15px;
-            transition: color 0.2s;
+            transition: color 0.3s ease; 
         }
         .navbar a:hover {
             color: #a855f7;
@@ -67,15 +67,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             letter-spacing: 0.5px;
         }
         
-        /* Obsidian block emojis as placeholders for the icons */
-        .header-title::before, .header-title::after {
-            content: "⬛"; 
-            font-size: 1.8rem;
-            filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.4));
+        /* Logo Images styling */
+        .header-title img {
+            width: 42px;
+            height: 42px;
+            image-rendering: pixelated; /* Keeps the Minecraft texture sharp */
+            filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.4));
         }
 
         /* Server IP Widget Box */
@@ -122,7 +123,7 @@
             font-size: 2.6rem;
             font-weight: 900;
             margin-bottom: 50px;
-            scroll-margin-top: 100px; /* Prevents the sticky navbar from covering the title */
+            scroll-margin-top: 100px;
         }
 
         /* Ranks Grid Layout */
@@ -199,7 +200,11 @@
 
     <div class="container">
         
-        <h1 class="header-title">Obsidian Store</h1>
+        <h1 class="header-title">
+            <img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae" alt="Obsidian Block Left">
+            Obsidian Store
+            <img src="https://minecraft.wiki/images/Obsidian_JE3_BE2.png?0a8ae" alt="Obsidian Block Right">
+        </h1>
 
         <div class="ip-bar">
             <span class="mc-label">MINECRAFT</span>
