@@ -422,6 +422,11 @@
 
         /* --- WIFI WARNING POPUP STYLES --- */
         .wifi-warning-popup {
+            top:50%;
+            left:50%;
+            right:auto;
+            bottom:auto;
+            transform:translate(-50%, -50%) scale(0.8);
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -444,7 +449,7 @@
         }
 
         .wifi-warning-popup.show {
-            transform: translateY(0);
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .wifi-warning-emoji {
