@@ -372,10 +372,6 @@
         }
 
         .rank-card {
-            background-color: rgba(21, 21, 21, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 2px solid #222222;
             border-radius: 16px;
             width: 100%;
             padding: 35px 30px;
@@ -427,67 +423,67 @@
         }
 
         /* ==========================================================================
-           RANK SYSTEM STYLING - THEMED COLOR VARIATIONS
+           PREMIUM UNIFIED RANK SYSTEM STYLING (MATCHING THE OBSIDIAN EFFECT)
            ========================================================================== */
 
-        /* 1. Starter (Deep Sky Blue Aesthetic) */
-        .rank-starter .rank-card { border-color: rgba(14, 165, 233, 0.2); }
-        .rank-starter .rank-card:hover { border-color: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.15); }
-        .rank-starter h3 { color: #0ea5e9; text-shadow: 0 0 10px rgba(14, 165, 233, 0.3); }
-        .rank-starter .buy-btn { background-color: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
-        .rank-starter .buy-btn:hover { background-color: #0284c7; box-shadow: 0 0 25px #0ea5e9; }
+        /* 1. Starter (Deep Sky Blue Premium Glass) */
+        .rank-starter .rank-card { background-color: rgba(5, 22, 38, 0.9); border: 2px solid rgba(14, 165, 233, 0.3); }
+        .rank-starter .rank-card:hover { border-color: #0ea5e9; box-shadow: 0 0 22px rgba(14, 165, 233, 0.4); }
+        .rank-starter h3 { color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px #0ea5e9; }
+        .rank-starter .buy-btn { background: linear-gradient(135deg, #051626 0%, #0ea5e9 100%); border: 1px solid rgba(14, 165, 233, 0.5); box-shadow: 0 0 15px rgba(14, 165, 233, 0.6); }
+        .rank-starter .buy-btn:hover { background: linear-gradient(135deg, #072542 0%, #38bdf8 100%); box-shadow: 0 0 28px #0ea5e9; }
 
-        /* 2. Bronze (Metallic Warm Bronze) */
-        .rank-bronze .rank-card { border-color: rgba(205, 127, 50, 0.2); }
-        .rank-bronze .rank-card:hover { border-color: #cd7f32; box-shadow: 0 0 15px rgba(205, 127, 50, 0.15); }
-        .rank-bronze h3 { color: #cd7f32; text-shadow: 0 0 10px rgba(205, 127, 50, 0.3); }
-        .rank-bronze .buy-btn { background-color: #cd7f32; box-shadow: 0 0 15px rgba(205, 127, 50, 0.4); }
-        .rank-bronze .buy-btn:hover { background-color: #b86f28; box-shadow: 0 0 25px #cd7f32; }
+        /* 2. Bronze (Metallic Warm Bronze Premium Glass) */
+        .rank-bronze .rank-card { background-color: rgba(31, 18, 8, 0.9); border: 2px solid rgba(205, 127, 50, 0.3); }
+        .rank-bronze .rank-card:hover { border-color: #cd7f32; box-shadow: 0 0 22px rgba(205, 127, 50, 0.4); }
+        .rank-bronze h3 { color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px #cd7f32; }
+        .rank-bronze .buy-btn { background: linear-gradient(135deg, #1f1208 0%, #cd7f32 100%); border: 1px solid rgba(205, 127, 50, 0.5); box-shadow: 0 0 15px rgba(205, 127, 50, 0.6); }
+        .rank-bronze .buy-btn:hover { background: linear-gradient(135deg, #301d0e 0%, #e69547 100%); box-shadow: 0 0 28px #cd7f32; }
 
-        /* 3. Silver (Bright Radiant Silver) */
-        .rank-silver .rank-card { border-color: rgba(226, 232, 240, 0.2); }
-        .rank-silver .rank-card:hover { border-color: #e2e8f0; box-shadow: 0 0 15px rgba(226, 232, 240, 0.15); }
-        .rank-silver h3 { color: #e2e8f0; text-shadow: 0 0 10px rgba(226, 232, 240, 0.3); }
-        .rank-silver .buy-btn { background-color: #e2e8f0; color: #0f172a; box-shadow: 0 0 15px rgba(226, 232, 240, 0.4); }
-        .rank-silver .buy-btn:hover { background-color: #cbd5e1; box-shadow: 0 0 25px #e2e8f0; }
+        /* 3. Silver (Radiant Metallic Silver Premium Glass) */
+        .rank-silver .rank-card { background-color: rgba(28, 30, 33, 0.9); border: 2px solid rgba(226, 232, 240, 0.3); }
+        .rank-silver .rank-card:hover { border-color: #e2e8f0; box-shadow: 0 0 22px rgba(226, 232, 240, 0.4); }
+        .rank-silver h3 { color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px #e2e8f0; }
+        .rank-silver .buy-btn { background: linear-gradient(135deg, #16191d 0%, #94a3b8 100%); border: 1px solid rgba(226, 232, 240, 0.5); color: #ffffff; box-shadow: 0 0 15px rgba(226, 232, 240, 0.4); }
+        .rank-silver .buy-btn:hover { background: linear-gradient(135deg, #24292f 0%, #cbd5e1 100%); box-shadow: 0 0 28px #e2e8f0; }
 
-        /* 4. Gold (Classic Luxurious Gold) */
-        .rank-gold .rank-card { border-color: rgba(234, 179, 8, 0.2); }
-        .rank-gold .rank-card:hover { border-color: #eab308; box-shadow: 0 0 15px rgba(234, 179, 8, 0.15); }
-        .rank-gold h3 { color: #eab308; text-shadow: 0 0 10px rgba(234, 179, 8, 0.3); }
-        .rank-gold .buy-btn { background-color: #eab308; color: #0f172a; box-shadow: 0 0 15px rgba(234, 179, 8, 0.4); }
-        .rank-gold .buy-btn:hover { background-color: #ca8a04; box-shadow: 0 0 25px #eab308; }
+        /* 4. Gold (Luxurious Gold Premium Glass) */
+        .rank-gold .rank-card { background-color: rgba(33, 26, 5, 0.9); border: 2px solid rgba(234, 179, 8, 0.3); }
+        .rank-gold .rank-card:hover { border-color: #eab308; box-shadow: 0 0 22px rgba(234, 179, 8, 0.4); }
+        .rank-gold h3 { color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px #eab308; }
+        .rank-gold .buy-btn { background: linear-gradient(135deg, #211a05 0%, #eab308 100%); border: 1px solid rgba(234, 179, 8, 0.5); color: #ffffff; box-shadow: 0 0 15px rgba(234, 179, 8, 0.6); }
+        .rank-gold .buy-btn:hover { background: linear-gradient(135deg, #362a0c 0%, #facc15 100%); box-shadow: 0 0 28px #eab308; }
 
-        /* 5. Platinum (Futuristic Teal Platinum) */
-        .rank-platinum .rank-card { border-color: rgba(45, 212, 191, 0.2); }
-        .rank-platinum .rank-card:hover { border-color: #2dd4bf; box-shadow: 0 0 15px rgba(45, 212, 191, 0.15); }
-        .rank-platinum h3 { color: #2dd4bf; text-shadow: 0 0 10px rgba(45, 212, 191, 0.3); }
-        .rank-platinum .buy-btn { background-color: #2dd4bf; color: #0f172a; box-shadow: 0 0 15px rgba(45, 212, 191, 0.4); }
-        .rank-platinum .buy-btn:hover { background-color: #14b8a6; box-shadow: 0 0 25px #2dd4bf; }
+        /* 5. Platinum (Futuristic Cyan/Teal Premium Glass) */
+        .rank-platinum .rank-card { background-color: rgba(5, 31, 28, 0.9); border: 2px solid rgba(45, 212, 191, 0.3); }
+        .rank-platinum .rank-card:hover { border-color: #2dd4bf; box-shadow: 0 0 22px rgba(45, 212, 191, 0.4); }
+        .rank-platinum h3 { color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px #2dd4bf; }
+        .rank-platinum .buy-btn { background: linear-gradient(135deg, #051f1c 0%, #2dd4bf 100%); border: 1px solid rgba(45, 212, 191, 0.5); color: #ffffff; box-shadow: 0 0 15px rgba(45, 212, 191, 0.6); }
+        .rank-platinum .buy-btn:hover { background: linear-gradient(135deg, #0d3833 0%, #5eead4 100%); box-shadow: 0 0 28px #2dd4bf; }
 
-        /* 6. Diamond (Ice Diamond Cyan) */
-        .rank-diamond .rank-card { border-color: rgba(6, 182, 212, 0.2); }
-        .rank-diamond .rank-card:hover { border-color: #06b6d4; box-shadow: 0 0 15px rgba(6, 182, 212, 0.15); }
-        .rank-diamond h3 { color: #06b6d4; text-shadow: 0 0 10px rgba(6, 182, 212, 0.3); }
-        .rank-diamond .buy-btn { background-color: #06b6d4; box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
-        .rank-diamond .buy-btn:hover { background-color: #0891b2; box-shadow: 0 0 25px #06b6d4; }
+        /* 6. Diamond (Ice Diamond Premium Glass) */
+        .rank-diamond .rank-card { background-color: rgba(5, 28, 33, 0.9); border: 2px solid rgba(6, 182, 212, 0.3); }
+        .rank-diamond .rank-card:hover { border-color: #06b6d4; box-shadow: 0 0 22px rgba(6, 182, 212, 0.4); }
+        .rank-diamond h3 { color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px #06b6d4; }
+        .rank-diamond .buy-btn { background: linear-gradient(135deg, #051c21 0%, #06b6d4 100%); border: 1px solid rgba(6, 182, 212, 0.5); box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
+        .rank-diamond .buy-btn:hover { background: linear-gradient(135deg, #0b2f38 0%, #22d3ee 100%); box-shadow: 0 0 28px #06b6d4; }
 
-        /* 7. Emerald (Vibrant Crystal Emerald) */
-        .rank-emerald .rank-card { border-color: rgba(16, 185, 129, 0.2); }
-        .rank-emerald .rank-card:hover { border-color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.15); }
-        .rank-emerald h3 { color: #10b981; text-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
-        .rank-emerald .buy-btn { background-color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
-        .rank-emerald .buy-btn:hover { background-color: #059669; box-shadow: 0 0 25px #10b981; }
+        /* 7. Emerald (Vibrant Emerald Premium Glass) */
+        .rank-emerald .rank-card { background-color: rgba(5, 28, 20, 0.9); border: 2px solid rgba(16, 185, 129, 0.3); }
+        .rank-emerald .rank-card:hover { border-color: #10b981; box-shadow: 0 0 22px rgba(16, 185, 129, 0.4); }
+        .rank-emerald h3 { color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px #10b981; }
+        .rank-emerald .buy-btn { background: linear-gradient(135deg, #051c14 0%, #10b981 100%); border: 1px solid rgba(16, 185, 129, 0.5); box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+        .rank-emerald .buy-btn:hover { background: linear-gradient(135deg, #0c2e21 0%, #34d399 100%); box-shadow: 0 0 28px #10b981; }
 
-        /* 8. Ruby (Deep Velvet Ruby Red) */
-        .rank-ruby .rank-card { border-color: rgba(239, 68, 68, 0.2); }
-        .rank-ruby .rank-card:hover { border-color: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.15); }
-        .rank-ruby h3 { color: #ef4444; text-shadow: 0 0 10px rgba(239, 68, 68, 0.3); }
-        .rank-ruby .buy-btn { background-color: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
-        .rank-ruby .buy-btn:hover { background-color: #dc2626; box-shadow: 0 0 25px #ef4444; }
+        /* 8. Ruby (Velvet Ruby Red Premium Glass) */
+        .rank-ruby .rank-card { background-color: rgba(33, 8, 8, 0.9); border: 2px solid rgba(239, 68, 68, 0.3); }
+        .rank-ruby .rank-card:hover { border-color: #ef4444; box-shadow: 0 0 22px rgba(239, 68, 68, 0.4); }
+        .rank-ruby h3 { color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px #ef4444; }
+        .rank-ruby .buy-btn { background: linear-gradient(135deg, #210808 0%, #ef4444 100%); border: 1px solid rgba(239, 68, 68, 0.5); box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+        .rank-ruby .buy-btn:hover { background: linear-gradient(135deg, #381212 0%, #f87171 100%); box-shadow: 0 0 28px #ef4444; }
 
-        /* 9. Obsidian (Deep Matte Black & Cosmic Purple Accent Flare) */
-        .rank-obsidian .rank-card { background-color: rgba(10, 5, 18, 0.9); border-color: rgba(168, 85, 247, 0.3); }
+        /* 9. Obsidian (Deep Matte Black & Cosmic Purple Glass) */
+        .rank-obsidian .rank-card { background-color: rgba(10, 5, 18, 0.9); border: 2px solid rgba(168, 85, 247, 0.3); }
         .rank-obsidian .rank-card:hover { border-color: #a855f7; box-shadow: 0 0 22px rgba(168, 85, 247, 0.4); }
         .rank-obsidian h3 { color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px #a855f7; }
         .rank-obsidian .buy-btn { background: linear-gradient(135deg, #12061c 0%, #7c3aed 100%); border: 1px solid rgba(168, 85, 247, 0.5); box-shadow: 0 0 15px rgba(124, 58, 237, 0.6); }
