@@ -27,12 +27,15 @@
             overflow-x: hidden;
             min-height: 100vh;
             width: 100%;
-            
             /* --- PREVENT TEXT SELECTION ON DOUBLE CLICK --- */
-            -webkit-user-select: none; /* Safari */
-            -moz-user-select: none;    /* Firefox */
-            -ms-user-select: none;     /* IE10+/Edge */
-            user-select: none;         /* Standard syntax */
+            -webkit-user-select: none;
+            /* Safari */
+            -moz-user-select: none;
+            /* Firefox */
+            -ms-user-select: none;
+            /* IE10+/Edge */
+            user-select: none;
+            /* Standard syntax */
         }
 
         /* Top Loading Progress Bar styling */
@@ -118,7 +121,6 @@
             from{opacity:0;}
             to{opacity:1;}
         }
-        }
 
         /* --- CUSTOM MOUSE TRACKING EFFECTS --- */
         .cursor-dot {
@@ -179,7 +181,7 @@
             text-decoration: none;
             font-weight: 800;
             font-size: 1.1rem;
-            transition: color 0.3s ease; 
+            transition: color 0.3s ease;
         }
         .nav-links a:hover {
             color: #a855f7;
@@ -254,7 +256,7 @@
             justify-content: center;
             gap: 25px;
             letter-spacing: 0.5px;
-            text-transform: uppercase; 
+            text-transform: uppercase;
         }
         .header-title img {
             width: 80px;
@@ -304,11 +306,11 @@
             color: #333333;
         }
         .ip-bar .value-text {
-            color: #a855f7; 
+            color: #a855f7;
             font-weight: 600;
         }
         .ip-bar .copy-btn {
-            background-color: #581c87; 
+            background-color: #581c87;
             color: white;
             border: none;
             padding: 6px 14px;
@@ -396,7 +398,7 @@
             justify-content: flex-start;
         }
         .rank-card h3 {
-            color: #a855f7; 
+            color: #a855f7;
             font-size: 1.4rem;
             margin-bottom: 12px;
             font-weight: 800;
@@ -410,7 +412,7 @@
 
         /* --- BUY BUTTON STYLES --- */
         .buy-btn {
-            background-color: #ff00ff; 
+            background-color: #ff00ff;
             color: #ffffff;
             border: none;
             border-radius: 12px;
@@ -424,12 +426,12 @@
             text-decoration: none; 
             display: inline-block;
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
-            transform-origin: top center; 
+            transform-origin: top center;
             transition: background-color 0.2s, box-shadow 0.2s;
             z-index: 5;
         }
         .buy-btn:hover {
-            background-color: #d400d4; 
+            background-color: #d400d4;
             box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
             animation: swingSideToSide 0.6s ease-in-out infinite alternate;
         }
@@ -448,7 +450,7 @@
         }
 
         .faq-item {
-            background-color: #111317; 
+            background-color: #111317;
             border: 1px solid #1e222b;
             border-radius: 12px;
             overflow: hidden;
@@ -456,7 +458,7 @@
         }
 
         .faq-item.active {
-            border: 2px solid #a855f7; /* Changed from yellow to beautiful purple */
+            border: 2px solid #a855f7;
             box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
         }
 
@@ -487,8 +489,8 @@
         }
 
         .faq-item.active .faq-icon {
-            transform: rotate(45deg); 
-            color: #a855f7; /* Purple active icon toggle */
+            transform: rotate(45deg);
+            color: #a855f7; 
         }
 
         .faq-content-container {
@@ -507,7 +509,7 @@
         }
 
         .faq-item.active .faq-inner-body {
-            border-top-color: #a855f7; /* Purple separating inline highlight divider */
+            border-top-color: #a855f7;
             padding-top: 20px;
         }
 
@@ -654,7 +656,7 @@
     </div>
 
     <div class="video-background">
-        <iframe src="https://www.youtube-nocookie.com/embed/1u-nMQp2UTI?autoplay=1&loop=1&playlist=1u-nMQp2UTI&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&disablekb=1&modestbranding=1&mute=1" allow="autoplay; encrypted-media"></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/atgjKEgSqSU?autoplay=1&loop=1&playlist=atgjKEgSqSU&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&disablekb=1&modestbranding=1&mute=1" allow="autoplay; encrypted-media"></iframe>
     </div>
 
     <div id="audioEngineContainer">
@@ -684,6 +686,7 @@
             </h1>
 
             <div class="widgets-container">
+             
                 <div class="ip-bar">
                     <img src="https://cdn.freebiesupply.com/logos/large/2x/minecraft-1-logo-png-transparent.png" alt="Minecraft Logo" class="widget-logo">
                     <span class="label-text">MINECRAFT</span>
@@ -821,8 +824,8 @@
 
     <script>
         let audioPlayer;
+        // Official YouTube ID for C418 - Aria Math (Minecraft Volume Alpha)
         const SONG_ID = 'atgjKEgSqSU'; 
-        
 
         function onYouTubeIframeAPIReady() {
             audioPlayer = new YT.Player('hiddenAudioPlayer', {
@@ -859,7 +862,6 @@
         function onAudioEngineStateChange(event) {
             if (event.data == YT.PlayerState.PLAYING) {
                 event.target.unMute();
-                event.target.unMute();
             }
             if (event.data == YT.PlayerState.ENDED) {
                 audioPlayer.playVideo();
@@ -872,12 +874,10 @@
             const contentContainer = buttonElement.nextElementSibling;
             const isActive = faqItem.classList.contains('active');
             
-            // Closes other open elements for a cleaner UX flow
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.classList.remove('active');
                 item.querySelector('.faq-content-container').style.maxHeight = null;
             });
-
             if (!isActive) {
                 faqItem.classList.add('active');
                 contentContainer.style.maxHeight = contentContainer.scrollHeight + "px";
@@ -904,7 +904,6 @@
 
         // --- MOUSE ANIMATION LOGIC ---
         const customDot = document.getElementById('customDot');
-
         function updateDotPosition(e) {
             customDot.style.left = e.clientX + 'px';
             customDot.style.top = e.clientY + 'px';
@@ -928,8 +927,10 @@
             ripple.style.top = e.clientY + 'px';
             
             document.body.appendChild(ripple);
+            
             setTimeout(() => { ripple.remove(); }, 500);
 
+            // Unmutes audio automatically when the user clicks the screen
             if (audioPlayer && typeof audioPlayer.unMute === 'function') {
                 audioPlayer.unMute();
             }
@@ -951,7 +952,6 @@
 
         window.addEventListener('offline', checkNetworkStatus);
         window.addEventListener('online', checkNetworkStatus);
-
         document.addEventListener('DOMContentLoaded', () => {
             const loadingBar = document.getElementById('loadingBar');
             loadingBar.style.animation = 'none'; 
