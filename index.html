@@ -107,20 +107,17 @@
         /* --- CONTENT LAYER WRAPPER WITH TRUE TOP-LEFT SLIDE INTRO --- */
         .page-wrapper {
             position: relative;
-            z-index: 10; 
+            z-index: 10;
             width: 100%;
             min-height: 100vh;
             opacity: 0;
-            transform: translate(-100px, -100px); /* Strictly offscreen up and to the left */
-            animation: slideInFromTopLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.3s; /* Fires fluidly as the progress bar hides */
+            animation: fadeIn .6s ease forwards;
+            animation-delay:.3s;
         }
 
-        @keyframes slideInFromTopLeft {
-            to {
-                opacity: 1;
-                transform: translate(0, 0);
-            }
+        @keyframes fadeIn {
+            from{opacity:0;}
+            to{opacity:1;}
         }
 
         /* --- CUSTOM MOUSE TRACKING EFFECTS --- */
@@ -194,23 +191,18 @@
         }
 
         /* --- AUDIO STATUS WIDGET SYSTEM --- */
-        
-.audio-status-container {
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-    min-width:180px;
-    height:24px;
-    overflow:hidden;
-}
-.audio-status-text {
-    position:absolute;
-    right:40px;
-    opacity:0;
-    transition:opacity .6s ease;
-    white-space:nowrap;
-}
- {
+        .audio-status-container {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #888888;
+            position: relative;
+            min-width: 160px;
+            text-align: right;
+            height: 24px;
+        }
+
+        .audio-status-text {
             position: absolute;
             right: 0;
             top: 0;
@@ -882,26 +874,24 @@
             }
         }
 
-        
-function runAudioStatusAnimationSequence() {
-    const nowPlaying=document.getElementById('nowPlayingText');
-    const trackName=document.getElementById('trackStatusText');
-    nowPlaying.style.display='block';
-    trackName.style.display='block';
-    trackName.classList.remove('fade-in');
-    trackName.classList.add('fade-out');
-    nowPlaying.classList.remove('fade-out');
-    nowPlaying.classList.add('fade-in');
-    setTimeout(()=>{
-        nowPlaying.classList.remove('fade-in');
-        nowPlaying.classList.add('fade-out');
-        setTimeout(()=>{
-            trackName.classList.remove('fade-out');
-            trackName.classList.add('fade-in');
-        },600);
-    },2000);
-}
-
+        function runAudioStatusAnimationSequence() {
+            const nowPlaying=document.getElementById('nowPlayingText');
+            const trackName=document.getElementById('trackStatusText');
+            trackName.style.display='none';
+            nowPlaying.style.display='block';
+            nowPlaying.classList.remove('fade-out');
+            nowPlaying.classList.add('fade-in');
+            setTimeout(()=>{
+                nowPlaying.classList.remove('fade-in');
+                nowPlaying.classList.add('fade-out');
+                setTimeout(()=>{
+                    nowPlaying.style.display='none';
+                    trackName.style.display='block';
+                    trackName.classList.remove('fade-out');
+                    trackName.classList.add('fade-in');
+                },600);
+            },2000);
+        }
 
         /* --- ACCORDION FAQ CONTROLLER --- */
         function toggleFaq(buttonElement) {
