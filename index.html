@@ -81,7 +81,7 @@
             pointer-events: none;
         }
 
-        /* Completely hides the background audio engine container safely */
+        /* Safely position the hidden player so it streams active data */
         #audioEngineContainer {
             position: fixed;
             bottom: 10px;
@@ -238,7 +238,7 @@
             transform: scale(0.95);
         }
 
-        /* Animated Soundwaves Mute Toggle Icon Box */
+        /* Animated Soundwaves */
         .soundwave-icon {
             display: flex;
             align-items: flex-end;
@@ -645,7 +645,7 @@
     </div>
 
     <div class="video-background">
-        <iframe src="https://www.youtube-nocookie.com/embed/atgjKEgSqSU?autoplay=1&loop=1&playlist=atgjKEgSqSU&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&disablekb=1&modestbranding=1&mute=1" allow="autoplay; encrypted-media"></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/1u-nMQp2UTI?autoplay=1&loop=1&playlist=1u-nMQp2UTI&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&disablekb=1&modestbranding=1&mute=1" allow="autoplay; encrypted-media"></iframe>
     </div>
 
     <div id="audioEngineContainer">
@@ -665,8 +665,8 @@
                 <a href="#shop-section">SHOP</a>
             </div>
 
-            <div class="audio-ui-panel text-animation-box" id="audioPanelContainer">
-                <div class="audio-track-info">♪ Aria Math - <span>C418</span></div>
+            <div class="audio-ui-panel" id="audioPanelContainer">
+                <div class="audio-track-info">♪ Background Music</div>
                 <button class="audio-ui-btn" id="playPauseBtn" onclick="togglePlayPause()">⏸</button>
                 <button class="audio-ui-btn" id="muteBtn" onclick="toggleMute()" title="Toggle Sound">
                     <div class="soundwave-icon" id="soundwaveContainer">
@@ -823,7 +823,8 @@
     <script>
         let audioPlayer;
         let isFirstInteraction = true;
-        const SONG_ID = 'atgjKEgSqSU'; 
+        // Synchronized to your exact original file's background video ID
+        const SONG_ID = '1u-nMQp2UTI'; 
 
         function onYouTubeIframeAPIReady() {
             audioPlayer = new YT.Player('hiddenAudioPlayer', {
@@ -841,7 +842,7 @@
                     loop: 1,
                     playlist: SONG_ID,
                     origin: window.location.origin,
-                    volume: 100 // Initialize at max volume so Windows intercepts the stream right away
+                    mute: 1 // Start muted to comply with browser autoplay security blocks
                 },
                 events: {
                     'onReady': onAudioEngineReady,
@@ -861,7 +862,9 @@
             
             if (event.data == YT.PlayerState.PLAYING) {
                 playPauseBtn.textContent = '⏸';
-                panel.classList.add('playing');
+                if (audioPlayer && !audioPlayer.isMuted()) {
+                    panel.classList.add('playing');
+                }
             } else {
                 playPauseBtn.textContent = '▶';
                 panel.classList.remove('playing');
@@ -887,10 +890,13 @@
             const panel = document.getElementById('audioPanelContainer');
             if (audioPlayer.isMuted()) {
                 audioPlayer.unMute();
+                audioPlayer.setVolume(100);
                 panel.classList.remove('muted-state');
+                panel.classList.add('playing');
             } else {
                 audioPlayer.mute();
                 panel.classList.add('muted-state');
+                panel.classList.remove('playing');
             }
         }
 
@@ -899,18 +905,23 @@
             if (audioPlayer && typeof audioPlayer.isMuted === 'function') {
                 if (audioPlayer.isMuted()) {
                     panel.classList.add('muted-state');
+                    panel.classList.remove('playing');
                 } else {
                     panel.classList.remove('muted-state');
+                    panel.classList.add('playing');
                 }
             }
         }
 
+        // Activates player on user interaction so Windows instantly tracks the sound engine
         function unlockAudioEngine() {
             if (isFirstInteraction && audioPlayer && typeof audioPlayer.unMute === 'function') {
                 audioPlayer.unMute();
                 audioPlayer.setVolume(100);
                 audioPlayer.playVideo();
-                document.getElementById('audioPanelContainer').classList.remove('muted-state');
+                const panel = document.getElementById('audioPanelContainer');
+                panel.classList.remove('muted-state');
+                panel.classList.add('playing');
                 isFirstInteraction = false;
             }
         }
@@ -957,8 +968,6 @@
             if (customDot.style.opacity !== '1') {
                 customDot.style.opacity = '1';
             }
-            // Unlock on mouse move so Windows mixer immediately tracks it
-            unlockAudioEngine();
         }
 
         window.addEventListener('mousemove', updateDotPosition);
@@ -966,7 +975,7 @@
         document.addEventListener('mouseover', updateDotPosition);
         document.addEventListener('mouseleave', () => { customDot.style.opacity = '0'; });
 
-        // --- RIPPLE ON CLICK ---
+        // --- RIPPLE AND WINDOWS SOUND INTERCEPT ---
         window.addEventListener('click', (e) => {
             const ripple = document.createElement('div');
             ripple.className = 'click-ripple';
@@ -975,7 +984,7 @@
             document.body.appendChild(ripple);
             setTimeout(() => { ripple.remove(); }, 500);
 
-            // Backup unlock channel
+            // User click triggers unmuting, instantly registering into Windows Volume Mixer
             unlockAudioEngine();
         });
 
