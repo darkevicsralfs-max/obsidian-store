@@ -666,21 +666,79 @@
                 <div>
                     <h2 class="section-title">RANKS</h2>
                     <div class="ranks-grid">
+                        
                         <div class="card-container">
                             <div class="rank-card">
-                                <h3>Example Rank</h3>
-                                <p>Replace this with your first rank description.</p>
+                                <h3>Starter</h3>
+                                <p>• </p>
                             </div>
                             <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
                         </div>
 
                         <div class="card-container">
                             <div class="rank-card">
-                                <h3>Example Rank</h3>
-                                <p>Replace this with your first rank description.</p>
+                                <h3>Bronze</h3>
+                                <p>• </p>
                             </div>
                             <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
                         </div>
+
+                        <div class="card-container">
+                            <div class="rank-card">
+                                <h3>Silver</h3>
+                                <p>• </p>
+                            </div>
+                            <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
+                        </div>
+
+                        <div class="card-container">
+                            <div class="rank-card">
+                                <h3>Gold</h3>
+                                <p>• </p>
+                            </div>
+                            <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
+                        </div>
+
+                        <div class="card-container">
+                            <div class="rank-card">
+                                <h3>Platinum</h3>
+                                <p>• </p>
+                            </div>
+                            <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
+                        </div>
+
+                        <div class="card-container">
+                            <div class="rank-card">
+                                <h3>Diamond</h3>
+                                <p>• </p>
+                            </div>
+                            <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
+                        </div>
+
+                        <div class="card-container">
+                            <div class="rank-card">
+                                <h3>Emerald</h3>
+                                <p>• </p>
+                            </div>
+                            <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
+                        </div>
+
+                        <div class="card-container">
+                            <div class="rank-card">
+                                <h3>Ruby</h3>
+                                <p>• </p>
+                            </div>
+                            <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
+                        </div>
+
+                        <div class="card-container">
+                            <div class="rank-card">
+                                <h3>Obsidian</h3>
+                                <p>• </p>
+                            </div>
+                            <a href="https://discord.gg/XjfQNeDTzN" target="_blank" class="buy-btn">buy</a>
+                        </div>
+
                     </div>
                 </div>
 
@@ -772,9 +830,7 @@
     <script>
         let audioPlayer;
         let isFirstInteraction = true;
-        // Updated to target your exact requested video track ID for audio only
-        const AUDIO_TRACK_ID = 'atgjKEgSqSU'; 
-
+        const AUDIO_TRACK_ID = 'atgjKEgSqSU';
         function onYouTubeIframeAPIReady() {
             audioPlayer = new YT.Player('hiddenAudioPlayer', {
                 videoId: AUDIO_TRACK_ID,
@@ -791,7 +847,7 @@
                     loop: 1,
                     playlist: AUDIO_TRACK_ID,
                     origin: window.location.origin,
-                    mute: 0 // Must start muted to bypass initial browser blocking restrictions
+                    mute: 0
                 },
                 events: {
                     'onReady': (e) => { e.target.playVideo(); }
@@ -799,7 +855,6 @@
             });
         }
 
-        // Title text automation loop
         let currentWidgetTextId = 1;
         setInterval(() => {
             const txt1 = document.querySelector('.audio-status-text.id-1');
@@ -823,7 +878,6 @@
             }
         }, 4000);
 
-        /* --- ACCORDION FAQ CONTROLLER --- */
         function toggleFaq(buttonElement) {
             const faqItem = buttonElement.parentElement;
             const contentContainer = buttonElement.nextElementSibling;
@@ -842,7 +896,6 @@
             }
         }
 
-        // --- CLIPBOARD LOGIC ---
         function copyIpAddress() {
             navigator.clipboard.writeText('play.obsidiansmp.net');
             const btn = document.getElementById('mcBtn');
@@ -857,7 +910,6 @@
             setTimeout(() => { btn.textContent = 'Copy Link'; }, 2000);
         }
 
-        // --- MOUSE ANIMATION LOGIC ---
         const customDot = document.getElementById('customDot');
         function updateDotPosition(e) {
             customDot.style.left = e.clientX + 'px';
@@ -871,7 +923,6 @@
         document.addEventListener('mouseenter', updateDotPosition);
         document.addEventListener('mouseover', updateDotPosition);
         document.addEventListener('mouseleave', () => { customDot.style.opacity = '0'; });
-
         window.addEventListener('click', (e) => {
             const ripple = document.createElement('div');
             ripple.className = 'click-ripple';
@@ -880,7 +931,6 @@
             document.body.appendChild(ripple);
             setTimeout(() => { ripple.remove(); }, 500);
 
-            // Trigger unmuting instantly on interaction so the engine plays audio flawlessly
             if (isFirstInteraction && audioPlayer && typeof audioPlayer.unMute === 'function') {
                 audioPlayer.unMute();
                 audioPlayer.setVolume(100);
@@ -889,7 +939,6 @@
             }
         });
 
-        // --- WIFI STATUS DETECTION LOGIC ---
         function checkNetworkStatus() {
             const warningPopup = document.getElementById('wifiWarning');
             if (!navigator.onLine) {
@@ -905,7 +954,6 @@
 
         window.addEventListener('offline', checkNetworkStatus);
         window.addEventListener('online', checkNetworkStatus);
-
         document.addEventListener('DOMContentLoaded', () => {
             const loadingBar = document.getElementById('loadingBar');
             loadingBar.style.animation = 'none'; 
